@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#141414">
+  <meta name="description" content="Make a little noise. A free, open source camera playground with pixel, VHS, comic, and glitch effects. Everything happens on your device.">
+  <title>Glitch Camera — Make a little noise.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c4f36b'/%3E%3Cpath d='M39 12 18 35h14l-7 17 23-26H33z' fill='%23141414'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Glitch Camera home"><span class="brand-mark" aria-hidden="true">ϟ</span> GLITCH<span class="brand-light">CAMERA</span><span class="version">v0.1</span></a>
+    <div class="header-right"><span class="privacy"><span class="status-dot"></span> ON YOUR DEVICE. ALWAYS.</span><a href="https://github.com/pemalama12/glitch-camera" target="_blank" rel="noopener noreferrer" class="github-link">GitHub <span aria-hidden="true">↗</span></a></div>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="title">
+      <div><p class="eyebrow">YOUR CAMERA. A DIFFERENT FREQUENCY.</p><h1 id="title">Make a little <span>noise.</span><svg class="spark" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 0v48M0 24h48M7 7l34 34M7 41 41 7" /></svg></h1></div>
+      <p class="intro-copy">Turn everyday pixels into something else.<br>Live effects. Zero uploads. All you.</p>
+    </section>
+    <section class="studio" aria-label="Camera studio">
+      <div class="stage-column">
+        <div class="stage-toolbar"><span class="eyebrow">01 / THE PLAYGROUND</span><span class="source-status" id="source-status">DEMO SIGNAL</span></div>
+        <div class="viewfinder" id="viewfinder">
+          <canvas id="preview" width="960" height="600" aria-label="Live effect preview: built-in animated demo"></canvas>
+          <div class="viewfinder-top"><span class="preview-badge" id="preview-badge"><span class="status-dot"></span> DEMO</span><span id="resolution">960 × 600</span></div>
+          <div class="crosshair tl"></div><div class="crosshair tr"></div><div class="crosshair bl"></div><div class="crosshair br"></div>
+          <div class="viewfinder-bottom"><span id="effect-caption">GLITCH CAMERA / PIXEL</span><button class="pause-button" id="pause" aria-label="Pause preview" aria-pressed="false">Ⅱ</button></div>
+        </div>
+        <div class="source-bar"><span class="source-label">INPUT</span><div class="source-actions"><button id="camera" class="source-button"><span aria-hidden="true">◉</span> Enable camera</button><button id="upload" class="source-button"><span aria-hidden="true">↥</span> Open image</button><button id="demo" class="text-button" aria-pressed="true">Try demo <span aria-hidden="true">↗</span></button></div><input type="file" id="file" accept="image/jpeg,image/png,image/webp,image/avif,image/gif" hidden></div>
+      </div>
+      <aside class="controls" aria-label="Effect controls">
+        <div class="control-heading"><span class="eyebrow">02 / MAKE IT YOURS</span><span class="tiny-spark" aria-hidden="true">✳</span></div>
+        <div class="effect-details"><span class="effect-number" id="effect-number">FILTER NO. 01</span><h2 id="effect-name">Pixel<span>.</span></h2><p id="effect-description">Big pixels. Small details. A little love for the 8-bit era.</p></div>
+        <div class="intensity-group"><div class="label-row"><label for="intensity">Intensity</label><output for="intensity" id="intensity-output">65%</output></div><input id="intensity" type="range" min="0" max="100" value="65"><div class="range-labels"><span>SUBTLE</span><span>ALL THE WAY</span></div></div>
+        <div class="setting"><label for="mirror">Mirror image</label><input class="toggle" id="mirror" type="checkbox"><label for="mirror" class="switch" aria-hidden="true"></label></div>
+        <div class="setting"><label for="motion">Animate effects</label><input class="toggle" id="motion" type="checkbox" checked><label for="motion" class="switch" aria-hidden="true"></label></div>
+        <div class="capture-group"><button class="capture" id="capture"><span class="capture-icon" aria-hidden="true"></span> Capture photo <kbd>SPACE</kbd></button><p>One moment. Yours to keep. <span>PNG ↓</span></p></div>
+        <div class="local-note"><span aria-hidden="true">⌁</span><p>Your camera and photos stay in your browser.<br>No account. No server processing.</p></div>
+      </aside>
+    </section>
+    <section class="filters-section" aria-labelledby="filters-title"><div class="section-label"><h2 id="filters-title" class="eyebrow">03 / PICK YOUR FREQUENCY</h2><span>6 EFFECTS · ENDLESS ACCIDENTS</span></div><div id="filters" class="filters" role="group" aria-label="Choose an effect"></div></section>
+    <section class="captures-section" aria-labelledby="captures-title"><div class="section-label"><h2 class="eyebrow" id="captures-title">04 / THE KEEPERS <span id="capture-count">00</span></h2><button class="text-button" id="clear" hidden>Clear captures</button></div><div id="gallery" class="gallery"><p id="gallery-empty">Good accidents deserve a save. Your captures will appear here.</p></div><p class="session-note">Captures last for this session. Download the ones you love.</p></section>
+    <p id="message" role="status" aria-live="polite"></p>
+  </main>
+  <footer><span>A LITTLE EXPERIMENT IN CREATIVE CHAOS.</span><a href="https://github.com/pemalama12/glitch-camera/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Open source. Open to your ideas. <span aria-hidden="true">↗</span></a><span>BUILT TO BE REMIXED <span class="footer-spark" aria-hidden="true">✳</span></span></footer>
+  <video id="video" autoplay playsinline muted hidden></video>
+</body>
+</html>

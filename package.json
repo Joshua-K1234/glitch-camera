@@ -1,0 +1,13 @@
+{
+  "name": "glitch-camera",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A browser camera playground. No accounts, uploads, or dependencies.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": { "node": ">=20" }
+}

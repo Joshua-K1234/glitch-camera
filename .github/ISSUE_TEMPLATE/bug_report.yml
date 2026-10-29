@@ -1,0 +1,29 @@
+name: Bug report
+description: Help us reproduce a problem with the studio.
+labels: [bug]
+body:
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: What did you do, and which source and effect were selected?
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser, version, and operating system
+      placeholder: e.g. Firefox on Windows, Safari on iPhone
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Optional screenshot or error message
+      description: Use the built-in demo or a non-sensitive sample. Never include private photos, camera feeds, or secrets.
