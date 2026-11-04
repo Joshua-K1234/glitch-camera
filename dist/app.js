@@ -280,6 +280,34 @@ $('clear').addEventListener('click', () => {
   state.captures.forEach((capture) => URL.revokeObjectURL(capture.url)); state.captures = []; renderGallery(); message('Session captures cleared.');
 });
 document.addEventListener('keydown', (event) => {
+  let buttons = document.querySelectorAll('[data-effect]');
+
+  const focused = document.activeElement;
+
+  if (focused.matches('.filter-card')) {
+      const buttons = [...document.querySelectorAll('.filter-card')];
+
+      const currentIndex = buttons.indexOf(focused);
+
+      if (event.code === 'ArrowLeft') {
+        event.preventDefault();
+
+        const previousIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+
+        buttons[previousIndex].focus();
+        selectEffect(effects[previousIndex].id);
+      }
+
+      if (event.code === 'ArrowRight') {
+        event.preventDefault();
+
+        const nextIndex = (currentIndex + 1) % buttons.length;
+
+        buttons[nextIndex].focus();
+        selectEffect(effects[nextIndex].id);
+      }
+    }
+
   const interactive = event.target.closest('button, a, input, select, textarea, [contenteditable]');
   if (event.code === 'Space' && !interactive && !event.repeat) { event.preventDefault(); capturePhoto(); }
 });
