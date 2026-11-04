@@ -305,7 +305,24 @@ document.addEventListener('keydown', (event) => {
 
         buttons[nextIndex].focus();
         selectEffect(effects[nextIndex].id);
-      }
+    }
+    // First filter
+        if (event.code === 'Home') {
+          event.preventDefault();
+
+          buttons[0].focus();
+          selectEffect(effects[0].id);
+        }
+
+        // Last filter
+        if (event.code === 'End') {
+          event.preventDefault();
+
+          const lastIndex = buttons.length - 1;
+
+          buttons[lastIndex].focus();
+          selectEffect(effects[lastIndex].id);
+        }
     }
 
   const interactive = event.target.closest('button, a, input, select, textarea, [contenteditable]');
