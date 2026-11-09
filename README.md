@@ -26,6 +26,7 @@ Open **http://localhost:5173**. There is no `npm install` step. Set `PORT` to us
 - Capture the displayed frame, then download a 960 × 600 PNG from **The Keepers**.
 - Keyboard capture with Space when you are not focused on another control.
 - Responsive layout, labeled controls, and reduced-motion preference support.
+- Keyboard filter navigation: Left/Right to move between effects, Home/End to jump to the first/last effect.
 
 ## Want to help?
 
@@ -72,9 +73,10 @@ node --check dist/app.js
 
 - Additional community-made filters, starting with duotone.
 - Square and portrait capture formats.
-- Keyboard arrow navigation between effects.
 - Camera selection and improved mobile camera handling.
 - Optional video recording after the capture workflow is stable.
+
+- [x] Keyboard arrow navigation between effects (#2).
 
 ## License
 
