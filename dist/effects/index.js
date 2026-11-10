@@ -95,6 +95,32 @@ function noir(frame, { intensity }) {
   return out;
 }
 
+
+function duotone(frame, { intensity }) {
+  const out = copy(frame);
+
+  const shadow = [32, 16, 79]; // red green blue (RGB) - Dark purple
+  const highlight = [255, 204, 112]; // Warm Yellow
+
+  // const shadow = [105, 38, 12]; // dark orange
+  // const highlight = [255, 204, 150]; // light orange
+
+  for (let p = 0; p < frame.data.length; p += 4) {
+    const brightness = luminance(frame.data, p) / 255;
+
+    for (let c = 0; c < 3; c++) {
+      const mapped =
+        shadow[c] + (highlight[c] - shadow[c]) * brightness;
+
+      out.data[p + c] =
+        frame.data[p + c] * (1 - intensity) + mapped * intensity;
+    }
+  }
+
+  return out;
+}
+
+
 export const effects = [
   { id: 'original', name: 'Original', tag: 'As you are', description: 'A clean slate. Your source, without any processing.', color: '#d5d1ca', render: copy },
   { id: 'pixel', name: 'Pixel', tag: 'Less is more', description: 'Big pixels. Small details. A little love for the 8-bit era.', color: '#c4f36b', render: pixel },
@@ -102,6 +128,7 @@ export const effects = [
   { id: 'comic', name: 'Comic', tag: 'Off the page', description: 'Posterized color and inky edges, straight out of a graphic novel.', color: '#ffbd78', render: comic },
   { id: 'glitch', name: 'Glitch', tag: 'Happy accidents', description: 'Split channels and scrambled lines. A beautiful signal failure.', color: '#ff8eb7', render: glitch },
   { id: 'noir', name: 'Noir', tag: 'After hours', description: 'Deep shadows and bright highlights. Everything in black and white.', color: '#b6d5dd', render: noir },
+  { id: 'duotone', name: 'Duotone', tag: 'Two of a kind', description: 'Deep purple shadows and warm yellow highlights.', color: '#ffcc70', render: duotone },
 ];
 
 export function applyEffect(id, frame, options = {}) {
