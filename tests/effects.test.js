@@ -31,6 +31,25 @@ for (const effect of effects) {
     assert.deepEqual(applyEffect(effect.id, frame, { intensity: 20 }).data, applyEffect(effect.id, frame, { intensity: 1 }).data);
   });
 }
+
+test('duotone: maps dark and light pixels to the chosen colours', () => {
+  const frame = {
+    width: 2,
+    height: 1,
+    data: new Uint8ClampedArray([
+      0, 0, 0, 123,
+      255, 255, 255, 234,
+    ]),
+  };
+
+  const output = applyEffect('duotone', frame, { intensity: 1 });
+
+  assert.deepEqual(Array.from(output.data), [
+    32, 16, 79, 123,
+    255, 204, 112, 234,
+  ]);
+});
+
 test('unknown effects fail with an actionable error', () => {
   assert.throws(() => applyEffect('missing', fixture()), /Unknown effect: missing/);
 });
